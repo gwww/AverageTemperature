@@ -19,17 +19,21 @@ Or install it yourself as:
     $ gem install average_temperature
 
 ## Usage
-
 ```
-
 require 'average_temperature'
-
-AverageTemperature.get_temperature( state, month ) 
-
-state is properly capitalized state name; e.g.: "Ohio". month is an integer, 0
-is January, 11 is December. 12 is yearly average.
-
+AverageTemperature.get_temperature( location, month ) 
 ```
+
+`location` (using the supplied data) is properly capitalized state name; 
+e.g.: "New York". `month` is an integer, 0
+for January, 11 is December. 12 is yearly average.
+
+You may supply your own temperature data if you wish using:
+```
+AverageTemperature.initialize( weather_data_file )
+```
+Each line of the `weather_data_file` must contain a location in alpha format (space OK too) 
+followed by 13 temperature data points. Each data point is a floating point number, e.g.: 54.236
 
 ## Contributing
 
