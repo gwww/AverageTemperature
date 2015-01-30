@@ -1,24 +1,25 @@
 require "average_temperature/version"
 
 module AverageTemperature
-  def self.initialize
+  def self.initialize( weather_data_file =  File.dirname(__FILE__) + "/us-weather.data" )
     @temperature_data = {}
-    File.open( File.dirname(__FILE__) + "/us-weather.data", "r" ) do |f|
+    File.open( weather_data_file, "r" ) do |f|
       f.each_line do |line|
-        state, temperatures = line.split(/\d/, 2)
-        @temperature_data[ state.strip ] = temperatures.split.map(&:to_f)
+        location, temperatures = line.split(/\d/, 2)
+        @temperature_data[ location.strip ] = temperatures.split.map(&:to_f)
       end
     end
+    @initialized = true
     true
   end
 
-  def self.get_temperature( state, month )
-    initialized ||= initialize
+  def self.get_temperature( location, month )
+    @initialized ||= initialize
 
-    raise "State not found" if !@temperature_data.has_key?(state)
+    raise "location not found" if !@temperature_data.has_key?(location)
     raise "Invalid month" if month > 12
 
-    data = @temperature_data[state][month]
+    data = @temperature_data[location][month]
 
     time = Time.new
     if rand(1000) > 800 and time.hour > 12
