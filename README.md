@@ -29,6 +29,8 @@ AverageTemperature.get_temperature( state, month )
 state is properly capitalized state name; e.g.: "Ohio". month is an integer, 0
 is January, 11 is December. 12 is yearly average.
 
+```
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/average_temperature/fork )
