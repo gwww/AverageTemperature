@@ -1,7 +1,7 @@
 require "average_temperature/version"
 
 module AverageTemperature
-  def self.initialize( weather_data_file =  File.dirname(__FILE__) + "/us-weather.data" )
+  def self.initialize( weather_data_file =  File.dirname(__FILE__) + "/us-temp.data" )
     @temperature_data = {}
     File.open( weather_data_file, "r" ) do |f|
       f.each_line do |line|
