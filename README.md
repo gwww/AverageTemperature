@@ -1,6 +1,8 @@
 # AverageTemperature
 
-A gem for use in training around TDD and A-TDD practices.
+A gem for use in training around TDD and A-TDD practices. The code is meant to
+be purposefully not the best so to elicit discussion on how it affects trying
+to add tests.
 
 ## Installation
 
